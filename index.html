@@ -3,95 +3,395 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FORM PENDAFTARAN</title>
+<title>Yayasan Penyalur Tenaga Kerja</title>
+
 <style>
-:root{--blue:#1261c9;--dark:#0b3d91;--light:#eef6ff;--border:#d7e3f3}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#f7fbff,#e8f2ff);color:#17324d}
-header{background:linear-gradient(135deg,var(--dark),var(--blue));color:#fff;padding:28px 18px;text-align:center;box-shadow:0 3px 12px #0002}
-header h1{margin:0;font-size:30px}header p{margin:8px 0 0;opacity:.9}
-.container{max-width:950px;margin:28px auto;padding:0 15px}
-.card{background:#fff;border-radius:18px;padding:25px;box-shadow:0 8px 28px #0b3d9115;margin-bottom:22px}
-h2{color:var(--dark);margin-top:0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-label{display:block;font-weight:700;margin-bottom:7px}input,textarea,select{width:100%;padding:12px;border:1px solid var(--border);border-radius:10px;font-size:15px;background:#fff}textarea{min-height:95px;resize:vertical}
-.full{grid-column:1/-1}.btn{border:0;border-radius:10px;padding:13px 18px;font-weight:700;cursor:pointer;font-size:15px}.primary{background:var(--blue);color:#fff}.wa{background:#16a34a;color:#fff}.secondary{background:#e9f2ff;color:var(--dark)}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.note{font-size:13px;color:#60758c;background:var(--light);padding:11px;border-radius:9px;margin-top:14px}
-.hidden{display:none!important}.login{max-width:420px;margin:70px auto;padding:15px}.error{color:#b91c1c;margin-top:10px;font-size:14px}.success{background:#ecfdf3;color:#166534;padding:12px;border-radius:10px;margin-top:15px}
-.topbar{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}.stat{padding:17px;border-radius:13px;background:var(--light);text-align:center}.stat b{display:block;font-size:25px;color:var(--dark)}
-table{width:100%;border-collapse:collapse;min-width:850px}th,td{padding:10px;border-bottom:1px solid #e5edf7;text-align:left;vertical-align:top}th{background:#f0f6ff;color:var(--dark)}.tablewrap{overflow:auto}.badge{padding:6px 9px;border-radius:999px;font-size:12px;font-weight:700;display:inline-block}.wait{background:#fff4cc;color:#8a5b00}.process{background:#dbeafe;color:#1d4ed8}.done{background:#dcfce7;color:#15803d}.small{font-size:12px;color:#667}
-.modal{position:fixed;inset:0;background:#0008;display:flex;align-items:center;justify-content:center;padding:15px;z-index:10}.modalbox{background:#fff;border-radius:16px;max-width:600px;width:100%;max-height:90vh;overflow:auto;padding:22px}.doc{max-width:100%;max-height:500px;border-radius:8px}
-footer{text-align:center;color:#718096;padding:25px;font-size:13px}
-@media(max-width:700px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.card{padding:18px}header h1{font-size:25px}}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#eaf6ff,#ffffff);
+  color:#172033;
+}
+
+header{
+  background:linear-gradient(135deg,#0757b8,#09a9d9);
+  color:white;
+  text-align:center;
+  padding:45px 20px;
+}
+
+header h1{
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+header p{
+  font-size:16px;
+}
+
+.container{
+  max-width:1050px;
+  margin:auto;
+  padding:25px 15px;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  margin-bottom:25px;
+  border-radius:18px;
+  box-shadow:0 8px 30px rgba(0,60,120,.12);
+}
+
+.card h2{
+  color:#0757b8;
+  margin-bottom:20px;
+}
+
+.pt-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;
+}
+
+.pt{
+  padding:17px;
+  text-align:center;
+  background:#f4faff;
+  border:1px solid #d6e8f8;
+  border-radius:12px;
+  font-weight:bold;
+  transition:.2s;
+}
+
+.pt:hover{
+  transform:translateY(-3px);
+  background:#e8f7ff;
+}
+
+label{
+  display:block;
+  font-weight:bold;
+  margin:15px 0 7px;
+}
+
+input,select{
+  width:100%;
+  padding:13px;
+  border:1px solid #ccd8e5;
+  border-radius:10px;
+  font-size:15px;
+}
+
+input:focus,select:focus{
+  outline:2px solid #8bdcff;
+}
+
+.member{
+  margin-top:20px;
+  padding:18px;
+  border-left:5px solid #0879d1;
+  background:#eef8ff;
+  border-radius:10px;
+  line-height:1.8;
+}
+
+.member strong{
+  color:#0757b8;
+}
+
+.info{
+  margin-top:15px;
+  color:#555;
+  font-size:13px;
+  line-height:1.6;
+}
+
+button{
+  width:100%;
+  margin-top:20px;
+  padding:15px;
+  border:none;
+  border-radius:10px;
+  background:linear-gradient(135deg,#0757b8,#08a6d8);
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:.9;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#687384;
+  font-size:13px;
+}
 </style>
 </head>
+
 <body>
+
 <header>
-<h1>FORM PENDAFTARAN</h1>
-<p>Silakan lengkapi data pendaftaran dengan benar</p>
+  <h1>YAYASAN PENYALUR TENAGA KERJA</h1>
+  <p>Informasi Lowongan & Pendaftaran Lamaran Kerja</p>
 </header>
 
-<section id="publicPage" class="container">
-<div class="card">
-<h2>Data Pemohon</h2>
-<form id="regForm">
-<div class="grid">
-<div><label>Nama Lengkap *</label><input id="nama" required></div>
-<div><label>NIK/KTP *</label><input id="nik" inputmode="numeric" required></div>
-<div><label>Nomor HP/WhatsApp *</label><input id="hp" inputmode="tel" required></div>
-<div><label>Email</label><input id="email" type="email"></div>
-<div class="full"><label>Alamat *</label><textarea id="alamat" required></textarea></div>
-<div class="full"><label>PENGETAHUAN TENTANG PT YANG DI LAMAR *</label><textarea id="namaPT" placeholder="Tuliskan pengetahuan Anda tentang PT yang dilamar..." required></textarea></div>
-<div><label>Posisi yang Diinginkan *</label><input id="posisi" required></div>
-<div class="full"><label>Alamat PT</label><textarea id="alamatPT"></textarea></div>
-<div><label>Jenis Layanan *</label>
-<select id="layanan" required>
-<option value="">-- Pilih posisi/jenis layanan --</option>
-<option>SPV</option>
-<option>Mekanik</option>
-<option>Driver</option>
-<option>HSE</option>
-<option>OPERATOR</option>
-<option>QC</option>
-<option>HELPER</option>
-<option>WELDER</option>
-<option>Lainnya</option>
-</select></div>
-<div class="full"><label>Upload Bukti Pembayaran Pendaftaran *</label><input id="buktiBayar" type="file" accept="image/*,.pdf" required><div class="small" style="margin-top:6px">Upload bukti pembayaran berupa foto atau PDF. Maksimal 4 MB.</div></div>
-<div class="full"><label>Upload File Pelamar *</label><input id="dokumen" type="file" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.txt" multiple required><div class="small" style="margin-top:6px">Bisa mengunggah beberapa file (KTP, CV, ijazah, sertifikat, dan dokumen pendukung). Maksimal 4 MB per file.</div></div>
-</div>
-<div class="note">Data pendaftar disimpan pada browser perangkat ini. Untuk penggunaan online oleh banyak perangkat, gunakan database/server.</div>
-<div class="actions">
-<button class="btn primary" type="submit">Kirim Lamaran</button>
+<div class="container">
 
+<!-- DAFTAR PT -->
+<section class="card">
+<h2>🏢 Daftar PT</h2>
 
-</div>
-<div id="result"></div>
-</form>
+<div class="pt-grid">
+
+<div class="pt">PT NESINAK</div>
+<div class="pt">PT SMT</div>
+<div class="pt">PT PATCO</div>
+<div class="pt">PT EPSON</div>
+<div class="pt">PT HITACHI</div>
+<div class="pt">PT OMRON</div>
+<div class="pt">PT DENSO</div>
+<div class="pt">PT PAS</div>
+<div class="pt">PT TAS</div>
+<div class="pt">PT MIDEA</div>
+<div class="pt">PT MUSASHI</div>
+<div class="pt">PT DAIKIN</div>
+<div class="pt">PT FUJI</div>
+<div class="pt">PT MAYORA</div>
+<div class="pt">PT HCI</div>
+<div class="pt">PT MEI</div>
+<div class="pt">PT KOMATSU</div>
+<div class="pt">PT YANMAR</div>
+<div class="pt">PT SAMSUNG</div>
+<div class="pt">PT PANASONIC</div>
+<div class="pt">PT SHARP</div>
+<div class="pt">PT LG</div>
+
 </div>
 </section>
+
+
+<!-- FORM PENDAFTARAN -->
+<section class="card">
+
+<h2>📝 Form Pendaftaran Lamaran</h2>
+
+<form id="formLamaran">
+
+<label>Nama</label>
+<input
+type="text"
+id="nama"
+placeholder="Masukkan nama lengkap"
+required
+>
+
+<label>PT yang Dilamar</label>
+
+<select id="pt" required>
+
+<option value="">-- Pilih PT --</option>
+
+<option>PT NESINAK</option>
+<option>PT SMT</option>
+<option>PT PATCO</option>
+<option>PT EPSON</option>
+<option>PT HITACHI</option>
+<option>PT OMRON</option>
+<option>PT DENSO</option>
+<option>PT PAS</option>
+<option>PT TAS</option>
+<option>PT MIDEA</option>
+<option>PT MUSASHI</option>
+<option>PT DAIKIN</option>
+<option>PT FUJI</option>
+<option>PT MAYORA</option>
+<option>PT HCI</option>
+<option>PT MEI</option>
+<option>PT KOMATSU</option>
+<option>PT YANMAR</option>
+<option>PT SAMSUNG</option>
+<option>PT PANASONIC</option>
+<option>PT SHARP</option>
+<option>PT LG</option>
+
+</select>
+
+
+<label>Posisi yang Dilamar</label>
+
+<input
+type="text"
+id="posisi"
+placeholder="Contoh: Operator Produksi"
+required
+>
+
+
+<label>No. WhatsApp</label>
+
+<input
+type="tel"
+id="wa"
+placeholder="08xxxxxxxxxx"
+required
+>
+
+
+<label>Email</label>
+
+<input
+type="email"
+id="email"
+placeholder="nama@email.com"
+required
+>
+
+
+<label>File PDF</label>
+
+<input
+type="file"
+id="pdf"
+accept=".pdf,application/pdf"
+required
+>
+
+
+<label>Bukti Pembayaran</label>
+
+<input
+type="file"
+id="bukti"
+accept="image/*,.pdf"
+required
+>
+
+
+<!-- INFORMASI MEMBER -->
+
+<div class="member">
+
+<strong>💳 KETERANGAN MEMBER YAYASAN</strong>
+
+<br>
+
+Biaya Member:
+<strong>Rp 300.000</strong>
+
+<br>
+
+Pembayaran melalui:
+
+<br>
+
+<strong>BCA 2340539985</strong>
+
+<br>
+
+a.n. <strong>ENDAH DWI</strong>
+
 </div>
+
+
+<p class="info">
+
+Pastikan data yang dimasukkan sudah benar sebelum mengirim lamaran.
+
+Setelah tombol <b>LAMAR SEKARANG</b> ditekan, aplikasi email akan dibuka
+menuju:
+
+<br><br>
+
+<b>📧 pendaftaranpma@gmail.com</b>
+
+<br><br>
+
+File PDF dan bukti pembayaran yang dipilih pada form perlu dilampirkan
+secara manual pada email karena HTML tanpa server tidak dapat mengirim
+file sebagai lampiran secara otomatis.
+
+</p>
+
+
+<button type="submit">
+📩 LAMAR SEKARANG
+</button>
+
+</form>
+
+</section>
+
 </div>
+
+
+<footer>
+© 2026 Yayasan Penyalur Tenaga Kerja
+</footer>
+
 
 <script>
-const KEY='formPendaftaranData_v1', AUTH='formPendaftaranAdmin_v1';
-const defaultAuth={user:'admin',pass:'admin123'};
-function getData(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}}
-function saveData(d){localStorage.setItem(KEY,JSON.stringify(d))}
-function getAuth(){try{return JSON.parse(localStorage.getItem(AUTH))||defaultAuth}catch(e){return defaultAuth}}
-function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
-const $=id=>document.getElementById(id);
-$('regForm').onsubmit=e=>{
-e.preventDefault();
-const files=[...$('dokumen').files];
-if(!files.length){alert('Silakan upload file lamaran.');return}
-if(files.some(x=>x.size>4*1024*1024)){alert('Setiap file maksimal 4 MB.');return}
-let d=getData();d.unshift({id:Date.now(),tanggal:new Date().toLocaleString('id-ID'),nama:$('nama').value,nik:$('nik').value,hp:$('hp').value,email:$('email').value,alamat:$('alamat').value,namaPT:$('namaPT').value,posisi:$('posisi').value,alamatPT:$('alamatPT').value,layanan:$('layanan').value,status:'Menunggu',files:files.map(f=>({name:f.name,type:f.type}))});
-saveData(d);
-const text='Halo, saya ingin mengirim lamaran kerja.\n\nNama: '+$('nama').value+'\nNIK/KTP: '+$('nik').value+'\nNo. HP: '+$('hp').value+'\nEmail: '+$('email').value+'\nAlamat: '+$('alamat').value+'\nPT yang dilamar: '+$('namaPT').value+'\nPosisi: '+$('posisi').value+'\nAlamat PT: '+$('alamatPT').value+'\nJenis Layanan: '+$('layanan').value+'\n\nSaya akan mengirim file lamaran melalui WhatsApp.';
-window.open('https://wa.me/6289520623922?text='+encodeURIComponent(text),'_blank');
-$('result').innerHTML='<div class="success">Data lamaran tersimpan. WhatsApp dibuka untuk mengirim lamaran.</div>';
-};
 
+document.getElementById("formLamaran")
+.addEventListener("submit", function(event){
+
+event.preventDefault();
+
+let nama =
+document.getElementById("nama").value;
+
+let pt =
+document.getElementById("pt").value;
+
+let posisi =
+document.getElementById("posisi").value;
+
+let wa =
+document.getElementById("wa").value;
+
+let email =
+document.getElementById("email").value;
+
+let subject =
+encodeURIComponent(
+"Lamaran Kerja - " + nama + " - " + pt
+);
+
+let body =
+encodeURIComponent(
+
+"Yth. Tim Pendaftaran,\n\n"+
+"Saya bermaksud mengajukan lamaran kerja.\n\n"+
+"Nama: "+nama+"\n"+
+"PT yang Dilamar: "+pt+"\n"+
+"Posisi yang Dilamar: "+posisi+"\n"+
+"No. WhatsApp: "+wa+"\n"+
+"Email: "+email+"\n\n"+
+"Member Yayasan: Rp 300.000\n"+
+"Rekening BCA: 2340539985\n"+
+"a.n. Endah Dwi\n\n"+
+"Saya akan melampirkan file PDF dan bukti pembayaran pada email ini.\n\n"+
+"Terima kasih."
+
+);
+
+window.location.href =
+"mailto:pendaftaranpma@gmail.com"+
+"?subject="+subject+
+"&body="+body;
+
+});
 
 </script>
+
 </body>
 </html>

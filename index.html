@@ -70,8 +70,8 @@ h1{font-size:clamp(34px,5vw,58px);line-height:1.06;margin:18px 0 14px;max-width:
   <div class="sectionHead"><h2>Informasi Pendaftaran</h2><p>Mohon baca informasi berikut sebelum mengirim lamaran.</p></div>
   <div class="infoGrid">
     <div class="info"><h3>Member Pendaftaran</h3><div class="price">Rp300.000</div><p>Konfirmasi pembayaran kepada admin setelah melakukan pendaftaran.</p></div>
-    <div class="info"><h3>DANA Admin</h3><div class="price">0895-2063-922</div><p>Nama pemilik akun dan detail pembayaran sebaiknya dikonfirmasi kepada admin sebelum transfer.</p></div>
-    <div class="info"><h3>Konfirmasi</h3><p>WhatsApp: <a class="wa" href="https://wa.me/628952063922" target="_blank">0895-2063-922</a></p><p>Email: <a href="mailto:okiyayasan@gmail.com">okiyayasan@gmail.com</a></p></div>
+    <div class="info"><h3>DANA Admin</h3><div class="price">089520623922</div><p>Nama pemilik akun dan detail pembayaran sebaiknya dikonfirmasi kepada admin sebelum transfer.</p></div>
+    <div class="info"><h3>Konfirmasi</h3><p>WhatsApp: <a class="wa" href="https://wa.me/628952063922" target="_blank">089520623922</a></p><p>Email: <a href="mailto:okiyayasan@gmail.com">okiyayasan@gmail.com</a></p></div>
   </div>
 </section>
 </main>
@@ -79,7 +79,7 @@ h1{font-size:clamp(34px,5vw,58px);line-height:1.06;margin:18px 0 14px;max-width:
 <footer class="footer" id="kontak">
 <div class="footin">
   <div><h3>Yayasan OKI</h3><p>Portal pendaftaran kerja & perusahaan mitra.</p></div>
-  <div><h3>Kontak Admin</h3><p>WA: 0895-2063-922</p><p>Email: okiyayasan@gmail.com</p></div>
+  <div><h3>Kontak Admin</h3><p>WA: 089520623922</p><p>Email: okiyayasan@gmail.com</p></div>
 </div>
 <div class="footin copy"><div>© 2026 Yayasan OKI. Semua hak dilindungi.</div></div>
 </footer>
@@ -97,11 +97,10 @@ h1{font-size:clamp(34px,5vw,58px);line-height:1.06;margin:18px 0 14px;max-width:
     <div class="field"><label>BB (kg)</label><input id="bb" type="number" min="20" max="250"></div>
     <div class="field"><label>Posisi yang dilamar *</label><select id="posisi" required><option value="">Pilih posisi</option><option>QC</option><option>Operator Produksi</option><option>Gudang</option><option>Admin</option></select></div>
     <div class="field full"><label>Riwayat penyakit</label><textarea id="penyakit" placeholder="Tulis jika ada. Jika tidak ada, isi: Tidak ada"></textarea></div>
-    <div class="field full"><label>Bukti Pembayaran Member *</label><input id="buktiPembayaran" type="file" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" required><div class="hint">Wajib diisi. Format JPG, PNG, atau PDF. Setelah WhatsApp terbuka, lampirkan bukti pembayaran secara manual jika diperlukan.</div></div>
+    <div class="field full"><label>Bukti Pembayaran Member *</label><input id="buktiPembayaran" type="file" accept="image/jpeg,image/png,application/pdf" required><div class="hint">Wajib diisi. Format JPG, PNG, atau PDF. Setelah WhatsApp terbuka, lampirkan bukti pembayaran secara manual jika diperlukan.</div></div>
     <div class="field full"><label>CV / Dokumen PDF (opsional)</label><input id="pdf" type="file" accept="application/pdf"><div class="hint">File PDF tidak dapat dilampirkan otomatis melalui WhatsApp/mailto. Setelah WhatsApp terbuka, lampirkan PDF secara manual jika diperlukan.</div></div>
-<div class="field full"><label>Bukti pembayaran member *</label><input id="bukti" type="file" accept="image/*,application/pdf" required><div class="hint">Upload bukti pembayaran dalam JPG, PNG, atau PDF. Setelah WhatsApp terbuka, kirim/lampirkan bukti pembayaran tersebut kepada admin.</div></div>
     <div class="field full check"><input id="setuju" type="checkbox" required><label for="setuju">Saya menyatakan data yang saya isi benar dan <strong>menyetujui S&K yang berlaku</strong>. Saya memahami bahwa ketersediaan posisi dan proses seleksi tetap mengikuti kebutuhan perusahaan mitra.</label></div>
-    <div class="formFoot"><button class="btn green" type="submit">Kirim Lamaran via WhatsApp</button><button class="btn" type="button" style="background:#edf3f8;color:#24435c" onclick="sendEmail()">Kirim via Email</button></div>
+    <div class="formFoot"><button class="btn green" id="submitBtn" type="submit" disabled>Kirim Lamaran via WhatsApp</button><button class="btn" id="emailBtn" type="button" style="background:#edf3f8;color:#24435c" onclick="sendEmail()" disabled>Kirim via Email</button></div>
   </form>
   <div class="success" id="success"><div class="icon">✓</div><h2>Data siap dikirim</h2><p>WhatsApp/email akan dibuka. Jika memakai WhatsApp, lampirkan PDF secara manual setelah chat terbuka.</p></div>
  </div>
@@ -124,20 +123,34 @@ function getData(){
   perusahaan:selectedCompany,nama:document.getElementById("nama").value,hp:document.getElementById("hp").value,email:document.getElementById("email").value,
   lahir:document.getElementById("lahir").value,pendidikan:document.getElementById("pendidikan").value,tb:document.getElementById("tb").value||"-",
   bb:document.getElementById("bb").value||"-",posisi:document.getElementById("posisi").value,penyakit:document.getElementById("penyakit").value||"Tidak ada",
-  pdf:document.getElementById("pdf").files[0]?.name||"Tidak ada",
   buktiPembayaran:document.getElementById("buktiPembayaran").files[0]?.name||"Tidak ada",
-  bukti:document.getElementById("bukti").files[0]?.name||"Belum dipilih"
+  pdf:document.getElementById("pdf").files[0]?.name||"Tidak ada"
  };
 }
 function message(d){
- return `Halo Admin Yayasan OKI, saya ingin melamar kerja.\n\nPerusahaan: ${d.perusahaan}\nNama: ${d.nama}\nNo. HP/WA: ${d.hp}\nEmail: ${d.email}\nTanggal lahir: ${d.lahir}\nPendidikan: ${d.pendidikan}\nTB: ${d.tb} cm\nBB: ${d.bb} kg\nPosisi: ${d.posisi}\nRiwayat penyakit: ${d.penyakit}\nFile CV/PDF: ${d.pdf}\nBukti pembayaran member: ${d.bukti}\n\nSaya menyetujui S&K yang berlaku. Mohon konfirmasi proses dan ketersediaan posisi.`;
+ return `Halo Admin Yayasan OKI, saya ingin melamar kerja.\n\nPerusahaan: ${d.perusahaan}\nNama: ${d.nama}\nNo. HP/WA: ${d.hp}\nEmail: ${d.email}\nTanggal lahir: ${d.lahir}\nPendidikan: ${d.pendidikan}\nTB: ${d.tb} cm\nBB: ${d.bb} kg\nPosisi: ${d.posisi}\nRiwayat penyakit: ${d.penyakit}\nBukti pembayaran member: ${d.buktiPembayaran}\nFile PDF/CV: ${d.pdf}\n\nSaya menyetujui S&K yang berlaku. Mohon konfirmasi proses dan ketersediaan posisi.`;
 }
+const buktiInput = document.getElementById("buktiPembayaran");
+const submitBtn = document.getElementById("submitBtn");
+const emailBtn = document.getElementById("emailBtn");
+function updateSendButtons(){
+  const hasProof = buktiInput.files && buktiInput.files.length > 0;
+  submitBtn.disabled = !hasProof;
+  emailBtn.disabled = !hasProof;
+  submitBtn.style.opacity = hasProof ? "1" : ".55";
+  emailBtn.style.opacity = hasProof ? "1" : ".55";
+  submitBtn.style.cursor = hasProof ? "pointer" : "not-allowed";
+  emailBtn.style.cursor = hasProof ? "pointer" : "not-allowed";
+}
+buktiInput.addEventListener("change", updateSendButtons);
+updateSendButtons();
+
 document.getElementById("applyForm").addEventListener("submit",e=>{
  e.preventDefault(); const d=getData(); const url="https://wa.me/628952063922?text="+encodeURIComponent(message(d));
  window.open(url,"_blank"); document.getElementById("applyForm").classList.add("hidden"); document.getElementById("success").classList.add("show");
 });
 function sendEmail(){
- const f=document.getElementById("applyForm"); if(!f.reportValidity())return;
+ const f=document.getElementById("applyForm"); if(!document.getElementById("buktiPembayaran").files.length){alert("Bukti Pembayaran Member wajib diisi.");return;} if(!f.reportValidity())return;
  const d=getData(); const subject=`Lamaran Kerja - ${d.perusahaan} - ${d.nama}`;
  window.location.href=`mailto:okiyayasan@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message(d))}`;
 }
